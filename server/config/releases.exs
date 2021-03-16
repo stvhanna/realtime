@@ -54,3 +54,12 @@ config :realtime, RealtimeWeb.Endpoint,
   http: [:inet6, port: app_port],
   pubsub_server: Realtime.PubSub,
   secret_key_base: session_secret_key_base
+
+config :os_mon,
+  memory_check_interval: 1,
+  process_memory_high_watermark: 0.005,
+  memsup_helper_timeout: 10,
+  start_memsup: true,
+  start_cpu_sup: false,
+  start_disksup: false,
+  start_os_sup: false

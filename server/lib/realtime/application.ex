@@ -10,6 +10,8 @@ defmodule Realtime.Application do
   defmodule JwtClaimValidatorsError, do: defexception([:message])
 
   def start(_type, _args) do
+    :gen_event.swap_handler(:alarm_handler, {:alarm_handler, :swap}, {Realtime.AlarmHandler, :ok})
+
     # Hostname must be a char list for some reason
     # Use this var to convert to sigil at connection
     host = Application.fetch_env!(:realtime, :db_host)
